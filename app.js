@@ -325,6 +325,6 @@ app.post("/idbulk", upload.single("studentAnswers"), async (req, res) => {
   res.end();
 });
 
-app.listen(1234, () => {
+app.listen(process.env.PORT || 1234, () => {
   console.log("Listening to http://localhost:1234");
 });
