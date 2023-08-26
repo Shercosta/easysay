@@ -1,0 +1,42 @@
+<%- include("header") %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col col-6"><%- include("title") %></div>
+    <div class="col col-6 d-flex justify-content-end mb-5">
+      <h1><i class="fa-regular fa-pen-to-square"></i><%= language %></h1>
+    </div>
+  </div>
+
+  <div>
+    <p class="form-label">Kunci Jawaban</p>
+    <div class="form-control">
+      <p><%= keyAnswer %></p>
+    </div>
+  </div>
+  <div class="text-center container-fluid">
+    <p>Mohon mengisi survey kepuasan anda terhadap Easysay</p>
+    <button type="button" class="btn btn-info">
+      <a
+        href="https://forms.gle/FApH5uzhVbRB4NtY9"
+        target="_blank"
+        class="link-body-emphasis"
+        >Survey 3 menit</a
+      >
+    </button>
+  </div>
+  <div>
+    <div class="form-label">
+      <div class="row mt-3">
+        <div class="w-auto">Jawaban</div>
+        <div class="col"><hr /></div>
+        <div class="w-auto"><%= score %></div>
+      </div>
+    </div>
+    <div class="form-control">
+      <p><%= answer %></p>
+    </div>
+  </div>
+</div>
+
+<%- include("footer") %>

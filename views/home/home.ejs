@@ -1,0 +1,68 @@
+<%-include('header')%>
+<div class="container-fluid">
+  <div class="help_icon">
+    <a href="/help" class="fs-3">
+      <abbr title="Help"><i class="fa-solid fa-circle-question"></i></abbr
+    ></a>
+  </div>
+  <div class="text-center">
+    <%-include('titleSubtitle')%>
+    <form action="/option" method="post">
+      <select class="form_language select_local" name="language" id="language">
+        <option selected disabled>Pilih Bahasa Esai</option>
+        <option value="Indonesia">Indonesia</option>
+        <option value="Inggris">Inggris</option>
+      </select>
+      <br />
+      <br />
+
+      <div class="container text-center">
+        <div class="row">
+          <div class="col col-12 col-lg-5">
+            <!-- <h2>Cek satu jawaban</h2> -->
+            <button
+              id="single"
+              type="submit"
+              name="select"
+              value="single"
+              class="btn btn-primary btn-lg"
+            >
+              Cek satu jawaban
+            </button>
+            <br />
+            <p class="service_explanation">
+              Cek satu jawaban esai pelajar berdasarkan jawaban yang anda anggap
+              benar dengan mengetikkan jawabannya.
+            </p>
+          </div>
+          <div class="col col-md-2 d-none d-lg-block">
+            <div class="vr h-100"></div>
+          </div>
+          <div class="col d-lg-none">
+            <hr />
+          </div>
+          <div class="col col-12 col-lg-5">
+            <!-- <h2>Cek banyak jawaban</h2> -->
+            <button
+              id="bulk"
+              type="submit"
+              name="select"
+              value="bulk"
+              class="btn btn-outline-primary btn-lg"
+            >
+              Cek banyak jawaban
+            </button>
+            <br />
+            <p class="service_explanation">
+              Cek banyak jawaban esai pelajar berdasarkan satu jawaban yang anda
+              anggap benar dengan mengunggah dokumen berisi jawaban esai para
+              pelajar.
+            </p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<%-include('footer')%>

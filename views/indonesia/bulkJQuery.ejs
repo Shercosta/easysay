@@ -1,0 +1,65 @@
+<%-include('header')%>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col col-6"><%-include('title')%></div>
+    <div class="col col-6 d-flex justify-content-end mb-5">
+      <h1><i class="fa-regular fa-file-excel"></i>Indonesia</h1>
+    </div>
+  </div>
+  <form
+    action="/idbulk"
+    id="idbulk"
+    enctype="multipart/form-data"
+    method="post"
+    class=""
+  >
+    <input type="hidden" name="language" value="Indonesia" />
+    <div class="row">
+      <div class="col col-12 col-lg-6 mb-5">
+        <label class="form-label" for="teacherAnswer">Jawaban Pengajar</label>
+        <textarea
+          class="form-control"
+          name="teacherAnswer"
+          id="teacherAnswer"
+        ></textarea>
+      </div>
+      <div class="col col-12 col-lg-6 mb-5">
+        <div>
+          <label class="form-label" for="studentAnswer"
+            >Excel Jawaban Pelajar</label
+          >
+          <input
+            class="form-control mb-3"
+            type="file"
+            accept=".csv"
+            multiple="multiple"
+            name="studentAnswers"
+            id="studentAnswer"
+          />
+          <label class="form-label" for="nameColumns">Kolom Nama Pelajar</label>
+          <input
+            class="form-control mb-3"
+            type="text"
+            name="nameColumns"
+            id="nameColumns"
+          />
+          <label class="form-label" for="answerColumns"
+            >Kolom Jawaban Pelajar</label
+          >
+          <input
+            class="form-control mb-3"
+            type="text"
+            name="answerColumns"
+            id="answerColumns"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button class="btn btn-lg btn-danger mb-5" type="submit">Periksa</button>
+    </div>
+  </form>
+</div>
+
+<%-include('footer')%>
