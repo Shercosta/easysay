@@ -179,7 +179,7 @@ app.post("/ids", (req, res) => {
     res.render("result/singleResult", {
       language: language,
       keyAnswer: teacherAnswer,
-      score: txtfile[0],
+      score: txtfile[0] + "%",
       answer: studentAnswer,
     });
   });
