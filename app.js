@@ -344,6 +344,45 @@ app.route("/ScenarioEn").post((req, res) => {
   });
 });
 
+app.route("/ScenarioEnTab").post((req, res) => {
+  const { key } = req.body;
+
+  CSVToJSON()
+    .fromFile("./dataset.csv")
+    .then((source) => {
+      for (let i = 0; i < source.length; i++) {
+        source[i].keyAnswer = key;
+        // source[i].studentAnswer = source[i][answerColumns];
+        // source[i].studentName = source[i][studentNames];
+      }
+      const csv = JSONToCSV(source);
+      fs.writeFileSync("dataset.csv", csv);
+
+      let options = {
+        mode: "json",
+        pythonOptions: ["-u"],
+        args: ["dataset"],
+      };
+
+      PythonShell.run("models/english/aprilModelTab.py", options).then(
+        (messages) => {
+          // scoreLoad = messages;
+          res.send(messages[0].scoreModelStem);
+        }
+      );
+      // .then(() => {
+      // res.render("result/bulkResult", {
+      //   language: language,
+      //   keyAnswer: keyAnswer,
+      //   givenObjectKeyLength: Object.keys(scoreLoad[0].studentName).length,
+      //   objectName: scoreLoad[0].studentName,
+      //   objectAnswer: scoreLoad[0].studentAnswer,
+      //   objectScore: scoreLoad[0].scoreModelStem,
+      // });
+      // });
+    });
+});
+
 app.route("/ScenarioId").post((req, res) => {
   const { key, ans } = req.body; //json recieved from postman has key and ans, put in their own variable
 
