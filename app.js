@@ -344,6 +344,28 @@ app.route("/ScenarioEn").post((req, res) => {
   });
 });
 
+app.route("/ScenarioId").post((req, res) => {
+  const { key, ans } = req.body; //json recieved from postman has key and ans, put in their own variable
+
+  let option = {
+    mode: "text",
+    pythonOptions: ["-u"],
+    args: [key, ans, "ScenarioId"],
+  };
+
+  PythonShell.run("./models/indonesia/ASAG.py", option).then((messages) => {
+    let txtfile = fs
+      .readFileSync("ScenarioId" + ".txt", "utf-8")
+      .replace(/\r/g, "")
+      .split("\n");
+
+    fs.unlink("ScenarioId" + ".txt", (err) => {
+      if (err) throw err;
+    });
+    res.send(txtfile[0] + "%");
+  });
+});
+
 app.listen(process.env.PORT || 1234, () => {
   console.log("Listening to http://localhost:1234");
 });
