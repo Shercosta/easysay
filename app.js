@@ -83,6 +83,7 @@ app.post("/ens", (req, res) => {
     })
     .then(() => {
       fs.unlink(docid + ".csv", (err) => {
+        //delete the csv file from crowding
         if (err) throw err;
       });
     })
@@ -323,6 +324,24 @@ app.post("/idbulk", upload.single("studentAnswers"), async (req, res) => {
   // });
 
   res.end();
+});
+
+app.route("/ScenarioEn").post((req, res) => {
+  const { key, ans } = req.body; //json recieved from postman has key and ans, put in their own variable
+
+  let Dataset = `keyAnswer,studentAnswer\n"${key}","${ans}"`;
+
+  fs.writeFileSync("ScenarioEn.csv", Dataset, "utf8");
+
+  let options = {
+    mode: "json",
+    pythonOptions: ["-u"],
+    args: ["ScenarioEn"],
+  };
+
+  PythonShell.run("models/english/aprilModel.py", options).then((messages) => {
+    res.send(((messages[0].scoreModelStem["0"] / 5) * 100).toFixed(2) + "%");
+  });
 });
 
 app.listen(process.env.PORT || 1234, () => {
