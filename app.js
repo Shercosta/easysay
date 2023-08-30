@@ -217,7 +217,6 @@ app.post("/idbulk", upload.single("studentAnswers"), async (req, res) => {
         pythonOptions: ["-u"],
         args: [teacherAnswer, sources[i][answerColumns], docid],
       };
-      console.log("error LINE 263");
       await PythonShell.run("./models/indonesia/ASAGbulk.py", options).then(
         (messages, err) => {
           console.log("error LINE 267");
@@ -236,9 +235,7 @@ app.post("/idbulk", upload.single("studentAnswers"), async (req, res) => {
         }
       );
     }
-    console.log("error LINE 283");
     res.write(idbulk3);
-    console.log("error LINE 285");
     fs.unlink(docid + ".csv", (err) => {
       if (err) throw err;
     });
