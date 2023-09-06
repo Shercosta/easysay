@@ -257,7 +257,10 @@ app.route("/ScenarioEn").post((req, res) => {
   };
 
   PythonShell.run("models/english/aprilModel.py", options).then((messages) => {
-    res.send(((messages[0].scoreModelStem["0"] / 5) * 100).toFixed(2) + "%");
+    // res.send(((messages[0].scoreModelStem["0"] / 5) * 100).toFixed(2) + "%");
+    // code above is to send just the score in a 0 to 100% percent range
+    res.send(messages);
+    // code above is to send the whole scoring processes as the model does
   });
 });
 
@@ -282,6 +285,7 @@ app.route("/ScenarioEnTab").post((req, res) => {
       PythonShell.run("models/english/aprilModelTab.py", options).then(
         (messages) => {
           res.send(messages[0].scoreModelStem);
+          // res.send(messages);
         }
       );
     });
