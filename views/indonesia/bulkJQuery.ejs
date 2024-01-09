@@ -22,12 +22,14 @@
           class="form-control"
           name="teacherAnswer"
           id="teacherAnswer"
+          required
+          autofocus
         ></textarea>
       </div>
       <div class="col col-12 col-lg-6 mb-5">
         <div>
           <label class="form-label" for="studentAnswer"
-            >Excel Jawaban Pelajar</label
+            >CSV Jawaban Pelajar</label
           >
           <input
             class="form-control mb-3"
@@ -36,13 +38,17 @@
             multiple="multiple"
             name="studentAnswers"
             id="studentAnswer"
+            required
           />
-          <label class="form-label" for="nameColumns">Kolom Nama Pelajar</label>
+          <label class="form-label" for="nameColumns"
+            >Kolom Nama Pelajar / NIM / NIS / No. Absen</label
+          >
           <input
             class="form-control mb-3"
             type="text"
             name="nameColumns"
             id="nameColumns"
+            required
           />
           <label class="form-label" for="answerColumns"
             >Kolom Jawaban Pelajar</label
@@ -52,6 +58,7 @@
             type="text"
             name="answerColumns"
             id="answerColumns"
+            required
           />
         </div>
       </div>
