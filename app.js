@@ -83,7 +83,7 @@ app.post("/ens", (req, res) => {
     .then(() => {
       fs.unlink(docid + ".csv", (err) => {
         //delete the csv file from crowding
-        if (err) throw err;
+        if (err) console.log(err);
       });
     })
     .then(() => {
@@ -136,7 +136,7 @@ app.post("/enb", upload.single("studentAnswers"), (req, res) => {
         })
         .then(() => {
           fs.unlink(docid + ".csv", (err) => {
-            if (err) throw err;
+            if (err) console.log(err);
           });
         })
         .then(() => {
@@ -200,7 +200,7 @@ app.post("/idbulk", upload.single("studentAnswers"), async (req, res) => {
     sources[0][answerColumns] == undefined
   ) {
     fs.unlink(docid + ".csv", (err) => {
-      if (err) throw err;
+      if (err) console.log(err);
     });
     res.write(
       '<div class="alert alert-warning" role="alert">Kolom Nama dan / atau kolom jawaban pelajar sepertinya tidak cocok dengan apa yang ada di file CSV, mohon di cek lagi karena harus sama persis namanya</div>'
@@ -237,7 +237,7 @@ app.post("/idbulk", upload.single("studentAnswers"), async (req, res) => {
     }
     res.write(idbulk3);
     fs.unlink(docid + ".csv", (err) => {
-      if (err) throw err;
+      if (err) console.log(err);
     });
     res.end();
   }
