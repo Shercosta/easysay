@@ -334,6 +334,51 @@ app.get("/combination_en", (req, res) => {
 
 app.get("/combination_id", async (req, res) => {
   const sources = await CSVToJSON().fromFile("./comb_texts.csv");
+
+  let tests = [];
+
+  for (let i = 0; i < sources.length; i++) {
+    const options = {
+      mode: "text",
+      pythonOptions: ["-u"],
+      args: [sources[i].keyAnswer, sources[i].studentAnswer],
+    };
+    await PythonShell.run("./models/indonesia/ASAG_comb.py", options).then(
+      (messages, err) => {
+        // console.log("error LINE 267");
+        // res.write("<tr>");
+        // res.write("<td>");
+        // res.write(sources[i].studentName);
+        // res.write("</td>");
+        // res.write("<td>");
+        // res.write(sources[i].studentAnswer);
+        // res.write("</td>");
+        // res.write("<td>");
+        // res.write(messages[0]);
+        // res.write("</td>");
+        // res.write("</tr>");
+        // res.write("<br />");
+        tests.push({
+          unique_id: sources[i].unique_id,
+          keyAnswer: sources[i].keyAnswer,
+          studentAnswer: sources[i].studentAnswer,
+          case_fold_q: messages[0],
+          case_fold_ans: messages[1],
+          spell_q: messages[2],
+          spell_ans: messages[3],
+          token_q: messages[4],
+          token_ans: messages[5],
+          token_q: messages[6],
+          token_ans: messages[7],
+          filter_q: messages[8],
+          filter_ans: messages[9],
+          score: messages[10],
+        });
+      }
+    );
+  }
+
+  res.send(tests);
 });
 
 app.listen(process.env.PORT || 1234, () => {
