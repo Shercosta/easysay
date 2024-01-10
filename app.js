@@ -313,6 +313,25 @@ app.route("/ScenarioId").post((req, res) => {
   });
 });
 
+app.get("/combination_en", (req, res) => {
+  // let Dataset = `keyAnswer,studentAnswer\n"${key}","${ans}"`;
+
+  // fs.writeFileSync("ScenarioEn.csv", Dataset, "utf8");
+
+  let options = {
+    mode: "json",
+    pythonOptions: ["-u"],
+    args: ["comb_texts"],
+  };
+
+  PythonShell.run("models/english/aprilModel.py", options).then((messages) => {
+    // res.send(((messages[0].scoreModelStem["0"] / 5) * 100).toFixed(2) + "%");
+    // code above is to send just the score in a 0 to 100% percent range
+    res.send(messages);
+    // code above is to send the whole scoring processes as the model does
+  });
+});
+
 app.listen(process.env.PORT || 1234, () => {
   console.log("Listening to http://localhost:1234");
 });
