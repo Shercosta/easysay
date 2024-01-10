@@ -219,7 +219,7 @@ app.post("/idbulk", upload.single("studentAnswers"), async (req, res) => {
       };
       await PythonShell.run("./models/indonesia/ASAGbulk.py", options).then(
         (messages, err) => {
-          console.log("error LINE 267");
+          // console.log("error LINE 267");
           res.write("<tr>");
           res.write("<td>");
           res.write(sources[i].studentName);
@@ -330,6 +330,10 @@ app.get("/combination_en", (req, res) => {
     res.send(messages);
     // code above is to send the whole scoring processes as the model does
   });
+});
+
+app.get("/combination_id", async (req, res) => {
+  const sources = await CSVToJSON().fromFile("./comb_texts.csv");
 });
 
 app.listen(process.env.PORT || 1234, () => {
