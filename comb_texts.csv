@@ -1,5 +1,7 @@
 unique_id,keyAnswer,studentAnswer
-1,Hasil yang didapat setelah scrolling twitter selama 10 menit pada pagi hari ini adalah timeline kebanyakan diisi oleh bahasan politik.,"Setelah 10 menit scrolling twitter, ternyata timeline saya berisi postingan dengan tema politik"
-2,The results i got after scrolling on Twitter for 10 menit this morning was my timeline was kebanyakan politics.,"After 10 minutes of scrolling on Twitter, ternyata my timeline was full of politics themed posts."
-3,"Setelah 10 menit scrolling twitter, ternyata timeline saya berisi postingan dengan tema politik",Hasil yang didapat setelah scrolling twitter selama 10 menit pada pagi hari ini adalah timeline kebanyakan diisi oleh bahasan politik.
-4,"After 10 minutes of scrolling on Twitter, ternyata my timeline was full of politics themed posts.",The results i got after scrolling on Twitter for 10 menit this morning was my timeline was kebanyakan politics.
+id-id,saya adalah pemilik tempat rekreasi ini,pemilik tempat rekreasi ini adalah saya
+id-iden,saya adalah pemilik tempat rekreasi ini,owner tempat rekreasi ini adalah saya
+iden-iden,saya adalah owner tempat rekreasi ini,owner tempat rekreasi ini adalah saya
+en-en,My children work at South Jakarta,South Jakarta is where my children work
+en-enid,My children work at South Jakarta,Jakarta Selatan is where my children work
+enid-enid,My children work at Jakarta Selatan,Jakarta Selatan is where my children work
